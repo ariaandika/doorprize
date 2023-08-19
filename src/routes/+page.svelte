@@ -1,7 +1,8 @@
 
 
 <script lang=ts>
-  const angka = ['-1','-1','-1','-1']
+  let angka = ['R','T','0','5']
+  let shufed = false
   
   const delay = 1000
   
@@ -18,7 +19,13 @@
     // return Math.floor((Math.random() * max))
   }
   
+  function reset() {
+    angka = ['R','T','0','5']
+    shufed = false;
+  }
+  
   async function shuffle(idx: number, mul = 1) {
+    shufed = true;
     const shuf = 20
     const timer = (delay / shuf) * mul
     for (let i = 0; i < timer; i++) {
@@ -46,8 +53,9 @@
   
   <div class="absolute top-0 my-6">
     <h1 class="text-5xl font-bold">Doorprize HUT RI ke-78 Candi Kalasan RW XIII</h1>
-    <div class="grid place-items-center my-6">
+    <div class="grid grid-cols-2 place-items-center my-6">
       <button class="bg-red-600 rounded px-6 py-2 font-bold text-white" on:click={start}>Start</button>
+      <button class="bg-red-600 rounded px-6 py-2 font-bold text-white" on:click={reset}>Reset</button>
     </div>
   </div>
   
@@ -59,7 +67,8 @@
     
       <div>
         <span class="text-9xl">
-          {#if a == "-1"} Y {:else} {a} {/if}
+          {a}
+          <!-- {#if a == "-1"} Y {:else} {a} {/if} -->
         </span>
       </div>
       
@@ -69,7 +78,7 @@
   
   <div class="absolute bottom-0 font-bold text-center text-3xl mb-2">
     <div>
-      Panitia HUT RI
+      Panitia HUT RI 2023
     </div>
     <div>Powered by <span class="font-bold">BANTER</span></div>
   </div>
